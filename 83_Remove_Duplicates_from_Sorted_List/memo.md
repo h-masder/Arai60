@@ -163,7 +163,7 @@ class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         #ここが最小問題の解き方。
         #リストが空、またはnodeが一つのときは、重複が存在しないのでそのまま返す。
-        #ここが最小問題。空リストかシングルトンのときの解き方。
+        #ここが最小問題。空リストかリストが一つのときの解き方。
         if head is None or head.next is None:
             return head
 
