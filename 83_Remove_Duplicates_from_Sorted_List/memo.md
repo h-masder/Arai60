@@ -112,3 +112,68 @@ class Solution:
 という形になるように実装した。
 コードはcode2.pyです。
 
+
+## step4
+
+再帰のついてのアドバイスをもらって、
+helper関数の代わりにdeleteDuplicates関数で再帰した
+
+```
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node = head
+        if node is None:
+            return None
+        if node.next is None:
+            return head
+        
+        if node.val == node.next.val:
+            node.next = node.next.next
+            _ = self.deleteDuplicates(node)
+        else:
+            _ = self.deleteDuplicates(node.next)
+        
+        return head
+```
+
+が、やはりループしているだけで再帰っぽくない。
+もう一度再帰について基本的な考え方を考えた。
+今見ている部分+残りの部分に分ければよいと思った（いまさらかもしれないが）。
+それで他の人のコメントも読めてきたので、たぶんそれでよさそう。
+
+考え方
+・問題 = 今の処理 + 残り(head.next)に分割する。
+・問題が小さいほうから解いていき、後で組み立てる。今回の問題はリストの末尾から解いていくようなもの。
+
+
+LinkedList を「今(head) + 残り(head.next)」 に分解し、
+残りの問題を再帰で解いてから
+今のノードの処理を行い、戻りながらリストを組み立てていく。
+
+
+```
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        #ここが最小問題の解き方。
+        #リストが空、またはnodeが一つのときは、重複が存在しないのでそのまま返す。
+        #ここが最小問題。空リストかシングルトンのときの解き方。
+        if head is None or head.next is None:
+            return head
+
+        #今の処理と残りの処理に分割する
+        head.next = self.deleteDuplicates(head.next)
+
+        #返り値が返ってきたときは、head.next以降の部分は解決しているので、自分の問題を解決する。
+        if head.val == head.next.val:
+            head.next = head.next.next
+            
+        return head
+
+```
