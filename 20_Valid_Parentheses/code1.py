@@ -12,10 +12,10 @@ class Solution:
             if c in [')', '}', ']']:
                 if c == stack.pop():
                     continue
-                else: #一致しない場合(markerである場合も含む)
+                else: #一致しない場合(途中でmarkerをpopした場合も含む)
                     return False
         
         if 'marker' == stack.pop():
             return True
-            
+
         return False
