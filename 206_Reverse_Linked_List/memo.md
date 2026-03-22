@@ -211,8 +211,7 @@ https://github.com/tom4649/Coding/pull/6#discussion_r2923258917
 
 - たしかにそれはそう。
 
-2) 自分は「後ろから取る」発想に寄っていたが、「前から積む」方がシンプルに書ける。
 
-3) 再帰は整理すると理解しやすいが、メモリ消費には注意が必要
+2) 再帰は整理すると理解しやすいが、メモリ消費には注意が必要
 
  https://github.com/dorxyxki/arai60/pull/7/changes
