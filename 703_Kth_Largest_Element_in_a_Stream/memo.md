@@ -38,9 +38,12 @@
 min-heapの実装には、heapqライブラリを使用する。
 
 heapqライブラリの中身をちょっとみてみた。
-・listで実現されている(https://github.com/python/cpython/blob/3.14/Lib/heapq.py)。割と直感的な実装。
 
--maxheapは3.14からなので互換性に注意。max-heapを使いたいときは、値を負にして min-heap を使うのも選択肢の一つ。
+(https://github.com/python/cpython/blob/3.14/Lib/heapq.py)
+
+・listで実現されている。割と直感的な実装。
+
+・maxheapは3.14からなので互換性に注意。max-heapを使いたいときは、値を負にして min-heap を使うのも選択肢の一つ。
 
 
 ```py
