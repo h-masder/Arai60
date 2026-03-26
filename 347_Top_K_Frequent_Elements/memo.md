@@ -108,13 +108,11 @@ class Solution:
 
 - まず、defaultdictライブラリを見てみる。
 - (https://docs.python.org/3.14/library/collections.html#collections.defaultdict)
-- 個人的にかなり読みづらい。
 
-> - class collections.defaultdict(default_factory=None, /[, ...])
+- 個人的にかなり読みづらい。
 > - The first argument provides the initial value for the default_factory attribute...
 > - If default_factory is not None, it is called without arguments to provide a default value for the given key, this value is inserted in the dictionary for the key, and returned.
-
-をみると、例えば`defaultdict(int)`でkeyがなければ`int()`が呼ばれるよう。
+のあたりをみると、例えば`defaultdict(int)`でkeyがなければ`int()`が呼ばれるよう。
 
 - 次にmost_commonをみてみる
 - (https://docs.python.org/ja/3.14/library/collections.html#collections.Counter) 
@@ -145,5 +143,5 @@ class Solution:
 
 - 変数の使い方がうまいと感じる。参考にしたい。
 
-###感想
+## 感想
 - この問題は、数字や出現回数を保持するデータの構造やsortの方法はいろいろありそうなので、時間があるときに他の人の解答をもう少し調べてみるとよさそう。
