@@ -97,7 +97,7 @@ class Solution:
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
         #nums1とnums2がソートされているとする。
-        #nums1とnums2がとても大きく、これらの配列と同等のメモリを確保したくないという要求があったとする。
+        #nums1とnums2がとても大きく、これらと同等のサイズの追加メモリを確保したくないという要求があったとする。
         nums1.sort()
         nums2.sort()
 
