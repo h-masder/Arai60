@@ -146,7 +146,7 @@ class Solution:
 
 #### `len()`の計算量
 
-- `list`の長さを知ってから、入力の長さをNとしたときにO(N)以上の処理を減らしたくなった。`len()`がO(N)で動作していないか気になったので実装を見た。
+- `list`の長さを知ってから、O(N)以上の処理を減らしたくなった（N: 入力サイズ）。`len()`がO(N)で動作していないか気になったので実装を見た。
 - https://github.com/python/cpython/blob/36e4ffc1/Python/bltinmodule.c#L1983
 - https://github.com/python/cpython/blob/main/Objects/abstract.c#L57
 - https://github.com/python/cpython/blob/main/Include/cpython/listobject.h#L25
