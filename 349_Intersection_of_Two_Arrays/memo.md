@@ -167,3 +167,38 @@ a[1:] = []
 print(a)     # [1]
 print(id(a)) # 47839472
 ```
+
+
+
+liquo-riceさんのコメントをもとに以下を書いた。
+
+```py
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        #nums1とnums2がソートされているとする。
+        #nums1とnums2がとても大きく、これらの配列と同等のメモリを確保したくないという要求があったとする。
+        nums1.sort()
+        nums2.sort()
+
+        write_index = 0
+        i = 0
+        j = 0
+
+        #intersectionはnums1に記録する。
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] < nums2[j]:
+                i += 1
+                continue
+            if nums2[j] < nums1[i]:
+                j += 1
+                continue
+            #直前の値を異なる場合のみ、intersectionを追加する。
+            if write_index == 0 or nums1[write_index - 1] != nums1[i]:
+                nums1[write_index] = nums1[i]
+                write_index += 1
+            i += 1
+            j += 1
+        
+        del nums1[write_index:]
+        return nums1
+```
