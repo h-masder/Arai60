@@ -3,7 +3,8 @@ https://leetcode.com/problems/intersection-of-two-arrays/description/
 
 ## 進め方
 
-- 自分で考える。書く前に時間計算量を見積もる(https://github.com/Yuto729/LeetCode_arai60/pull/16#discussion_r2602118324)。エラーをはかずに3回解くようになるまで書いてみる。
+- 自分で考える。書く前に時間計算量を見積もる(https://github.com/Yuto729/LeetCode_arai60/pull/16#discussion_r2602118324)。
+- エラーをはかずに3回解くようになるまで書いてみる。
 - 他の人のコードを見て、自分のコードと比較して修正する。
 
 ## 自分で考える
@@ -26,6 +27,11 @@ local name の中にdotがあったら、スキップする。
 local name の中に+があったら、次の@までスキップする。
 domin nameの中にdotがあったら、そのままにする。
 domain nameの中にplusがあったらinvalidとする。
+
+###実行時間の見積もり
+Nをリストの長さ、Mをemailの（最大の）長さとするとO(NM)
+LeetCode上では、N<=100、M<=100であり、Pythonが実行ステップが10^7/秒くらいなので、
+数ミリ秒くらいかかる。
 
 
 ```py
