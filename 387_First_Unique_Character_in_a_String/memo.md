@@ -110,7 +110,7 @@ class Solution:
 4) OrderedDictについて
 
 - https://github.com/python/cpython/blob/3.14/Lib/collections/__init__.py#L119 をざっと見ると、双方向のリンクリスト（Doubly Linked List）でkey-valueを格納した順序を記録しているようだ。
-- `del candidates[c]`のときに対象の位置をどのように特定しているのか気になってみたところ、キーからリンクノードへの参照を `dict` で管理しているため、O(1)でリンクノードへアクセスできる。これを書いてみる。書いてみる。
+- `del candidates[c]`のときに対象の位置をどのように特定しているのか気になってみたところ、キーからリンクノードへの参照を `dict` で管理しているため、O(1)でリンクノードへアクセスできる。これを書いてみる。
 - OrderedDictを実装している人もいる(https://github.com/tom4649/Coding/pull/14/changes)
 
 
