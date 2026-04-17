@@ -116,6 +116,7 @@ class Solution:
 
 
 （`number_of_XXX`という変数名に関するコメントをいただき、ここからは`number_of_`は`num_`に変更することにした。）
+https://github.com/h-masder/Arai60/pull/18/changes#r3092788628
 
 UnionFindで書くなら
 ```py
