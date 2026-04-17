@@ -192,7 +192,7 @@ class Solution:
 
 2) Max_island_sizeの比較(https://github.com/hemispherium/LeetCode_Arai60/pull/18/changes)
 - max関数で簡単に書ける。
-3) 深さ優先探索（再帰なし）における、探索場所の追加方法
+3) 深さ優先探索（再帰なし）における、探索場所の追加方法(https://github.com/rimokem/arai60/pull/18)
 - 次の探索場所を最後に一気にいれる方法。深さ優先ならこれが読みやすいかな。
 ```py
 class Solution:
