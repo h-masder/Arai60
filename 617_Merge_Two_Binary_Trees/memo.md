@@ -18,7 +18,7 @@
 - 全nodeへのアクセスは2*10^3
 - Pythonの実行時間が10^7/秒とすると、最大で数ミリ程度
 
-
+以下のコードは未完成。
 - **幅優先**
 ```py
 # Definition for a binary tree node.
@@ -53,7 +53,7 @@ class Solution:
         
         return merged_root
 ```
-- 「書いて次の候補を探す」書き方がわからず他の人の解答を見た。
+- ここまで書いて、「次の候補を探す」書き方がわからず他の人の解答を見た。
 
 - https://github.com/rimokem/arai60/pull/23/changes
  -以下のようなsnippetを拾った。
