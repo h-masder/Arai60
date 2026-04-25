@@ -157,7 +157,7 @@ class Solution:
 ## あり得る追加の質問
 - 以下のように変更してといわれるかもしれない。
   - Please return **a list of all root-to-leaf paths** such that adding up all the values along the path equals targetSum.
-- 入力は前問と同じ、出力はpathのnodeの値の列(List[List[int]])とする。
+- 入力は前問と同じにする。出力はas a list of node values(List[List[int]])とする。
 - pathがなければ、[]を返すとする。
 
 - たどったnodeの値のリストと合計を状態で保持しながらたどっていき、辿り着いたら, listに入れる。
