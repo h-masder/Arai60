@@ -223,8 +223,9 @@ class Solution:
         return getPathSum_helper(root, targetSum)
 
 ```
-- うまく書けなかったのは、`for path in getPathSum_helper(node.left, target - node.val):`の箇所。leafから空リスト([])が返ってきたときにその扱いに困ったが、このように書けば無視出来る。
-- この書き方は慣れておきたい。
+- うまく書けなかったのは、`for path in getPathSum_helper(node.left, target - node.val):`の箇所。
+  - leafから空リスト([])が返ってきたときにその扱いに困ったが、上記のように書けばうまく対処できる。
+  - この書き方は慣れておきたい。
 
 ## 他の人のコードを読む(見た解答にコメントも残す)
 - https://github.com/rimokem/arai60/pull/25
@@ -235,8 +236,8 @@ class Solution:
 
 
 
-- 最後に全部をミスなく3回書く。
-- 他の人の解答を見ながら、改善した。例えば、再帰を使わない深さ優先探索は以下のようにまとめられるところはまとめた。
+
+- 他の人の解答を見て改善し、全部をミスなく3回書く。改善したところは、例えば、再帰を使わない深さ優先探索は以下のコメントアウトの部分。
 ```py
 # Definition for a binary tree node.
 # class TreeNode:
