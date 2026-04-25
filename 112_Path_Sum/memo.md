@@ -189,8 +189,8 @@ class Solution:
         return paths
 ```
 - 見つかったらleafからrootにかけて経路を構築していく。再帰で書ける？
-  - 子から結果が返ってきたとき、リストがあれば、そこ自分のnodeを追加して上に返せばよさそう。
-  - こちらは、うまく書けず、LLMの助けをかりて書いた。
+  - 子から結果が返ってきたとき、リストがあれば、そこ自分のnode.valを追加して上に返せばよさそう。
+  - こちらはうまく書けず、LLMの助けをかりて書いた。
 ```py
 # Definition for a binary tree node.
 # class TreeNode:
