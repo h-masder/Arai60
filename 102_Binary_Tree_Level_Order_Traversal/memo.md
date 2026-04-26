@@ -118,3 +118,6 @@ class Solution:
 - https://github.com/Manato110/LeetCode-arai60/pull/26
 - https://github.com/rimokem/arai60/pull/26
 - https://github.com/kitano-kazuki/leetcode/pull/26/changes
+
+
+- step3は、上の二つに加えて、再帰バージョンで3回エラーをださずに書く
