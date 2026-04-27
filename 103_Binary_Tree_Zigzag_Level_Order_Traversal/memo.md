@@ -250,45 +250,6 @@ class Solution:
         return transform_zigzag_order(level_to_values)
 ```
 
-```py
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
-        
-        def generate_left_to_right_order_values(node_and_levels: List[Tuple[TreeNode, int]]) -> List[List[int]]:
-            level_to_values = []
-            while node_and_levels:
-                node, level = node_and_levels.pop()
-                while len(level_to_values) <= level:
-                    level_to_values.append([])
-                level_to_values[level].append(node.val)
-                
-                if node.right is not None:
-                    node_and_levels.append((node.right, level + 1))
-                if node.left is not None:
-                    node_and_levels.append((node.left, level + 1))
-
-
-            return level_to_values
-        
-        def transform_zigzag_order(level_to_values: List[List[int]]) -> List[List[int]]:
-            left_to_right = True
-            for i in range(len(level_to_values)):
-                if not left_to_right:
-                    level_to_values[i].reverse()
-                left_to_right = not left_to_right
-            return level_to_values
-        
-        level_to_values = generate_left_to_right_order_values([(root, 0)])
-        return transform_zigzag_order(level_to_values)
-```
 
 - **https://github.com/Manato110/LeetCode-arai60/pull/27 の step3**
 
