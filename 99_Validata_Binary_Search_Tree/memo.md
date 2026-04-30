@@ -58,7 +58,7 @@ The number of nodes in the tree is in the range [1, 104].
 
 - コードはidea2.mdです。
 
-- (別のアプローチ2)inorderで見ていけば、(直前に見たnodeの値) < (今見ているnodeの値)になっていれば、BSTである。
+- (別のアプローチ2)inorderで見ていく。(直前に見たnodeの値) < (今見ているnodeの値)になっていれば、BSTである。
   -   - https://github.com/Manato110/LeetCode-arai60/pull/28
 - コードはidea3.mdです。 
 
