@@ -22,7 +22,7 @@ Return the total number of ways you can paint the fence.
   - n = 1 のとき、returnするのは k
   - n = 2 のとき、returnするのは k * k
   - n = 3 のとき、
-    - k >= 3 なら、returnするのは 0
+    - n >= 3, k = 1 なら、returnするのは 0
     - それ以外は、returnするのは last_two_same_color_count_3 + last_two_different_color_count_3
       - last_two_same_color_count_i とは n = i のときの全パターンのうち、最後の2色が同色のもの
       - last_two_different_color_count_i とは n = i のときの全パターンのうち、最後の2色が異色のもの
