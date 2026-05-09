@@ -144,7 +144,7 @@ class Solution:
                 if previous_num < num:
                     maximum_lengths_ending_at_each_index[i] = max(
                         maximum_lengths_ending_at_each_index[i],
-                        maximum_lengths_ending_at_each_index[j] + 1,
+                        maximum_lengths_ending_at_each_index[j] + 1
                     )
 
         for i, num in enumerate(nums):
