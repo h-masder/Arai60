@@ -171,7 +171,7 @@ class Solution:
 
 
 
-- メモ
+#### メモ
 - https://github.com/fuga-98/arai60/pull/33#discussion_r2040681343
 - この辺りに違和感がないことをあたらめて確認。
 ```py
