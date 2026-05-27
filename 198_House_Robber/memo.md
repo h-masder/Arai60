@@ -61,11 +61,8 @@ class Solution:
 ```
 
 - メモ化再帰バージョン
-**実行時間の見積もり**
-  - whileバージョンでは、同じ index に何度も到達していた。
-  - しかし、一度計算した index の結果を cache に保存しておけば、同じ index を再計算しなくてよい。
-  - index は nums の長さ分しか存在しないため、再帰関数 max_money_from が実行される回数も nums の長さと同程度で済む。
-  - nums の長さは最大でも100なので、再帰関数の実行回数は高々100回程度。
+- **実行時間の見積もり**
+  - 計算結果を保存すれば、各indexに対して再帰関数の処理は一度で済む。
   - 再帰関数内で行う処理は数十ステップ程度なので、全体のステップ数を多めに見積もっても 10^4 程度。
   - Python の実行速度を 10^7 ステップ/秒 とすると、実行時間は 1ms 程度になる。
 
@@ -147,4 +144,51 @@ class Solution:
         
         return rob_from(0)
 ```
-- これならわかりやすいかな。
+
+- while: 前から
+```py
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        num_houses = len(nums)
+        if num_houses == 0:
+            return 0
+        if num_houses == 1:
+            return nums[0]
+        
+        max_money_up_to = [0] * (num_houses)
+        max_money_up_to[0] = nums[0]
+        max_money_up_to[1] = max(nums[0], nums[1])
+        house_index = 2
+        while house_index < num_houses:
+            money_without_current_house = max_money_up_to[house_index - 1]
+            money_with_current_house = nums[house_index] + max_money_up_to[house_index - 2]
+            max_money_up_to[house_index] = max(money_without_current_house, money_with_current_house)
+
+            house_index += 1
+        
+        return max_money_up_to[num_houses - 1]
+```
+- while: うしろから
+```py
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        num_houses = len(nums)
+        if num_houses == 0:
+            return 0
+        if num_houses == 1:
+            return nums[0]
+        
+        max_money_from = [0] * (num_houses)
+        max_money_from[num_houses - 1] = nums[num_houses - 1]
+        max_money_from[num_houses - 2] = max(nums[num_houses - 1], nums[num_houses - 2])
+        house_index = num_houses - 3
+        while house_index >= 0:
+            money_without_current_house = max_money_from[house_index + 1]
+            money_with_current_house = nums[house_index] + max_money_from[house_index + 2]
+            max_money_from[house_index] = max(money_without_current_house, money_with_current_house)
+
+            house_index -= 1
+        
+        return max_money_from[0]
+
+```
