@@ -58,4 +58,25 @@ class Solution:
         return max_profit
 ```
 
+- 
 # 他の人のコードを見る。
+- https://github.com/Manato110/LeetCode-arai60/pull/38 の書いたコード2
+- pricesを操作しながら、最小の価格(min_price)を保持し、prices[i] - min_priceが最も大きいものを探す。
+- 言われればすごく簡単。こういうのがまずぱっとかけるといいと思う。
+
+```py
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        max_profit = 0
+        min_price = prices[0]
+        for price in prices:
+            max_profit = max(max_profit, price - min_price)
+            min_price = min(min_price, price)
+        return max_profit
+```
+
+
+- 皆さん大体この解きかたで解いている。とても直感的でわかりやすい。
+- 他には特に気になることはないが、いろいろ考えている方もいる。後で確認できるように載せておく
+  - https://github.com/Yuto729/leetcode/pull/42
+  - https://github.com/arahi10/coding-practice/pull/4
