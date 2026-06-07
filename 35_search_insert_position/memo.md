@@ -87,7 +87,7 @@ class Solution:
 ```
 
 # 他の人のコードをみる
-- コードをざっと見て、なかなか二分探索はコードを追うのが大変だという状況であることが分かった。
+- コードをざっと見て、二分探索はコードを追うのが大変だという状況であることが分かった。
   - https://github.com/atmaxstar/coding_practice/pull/5
   - https://github.com/Manato110/LeetCode-arai60/pull/42
   - https://github.com/MasukagamiHinata/Arai60/pull/15#discussion_r3070735213
