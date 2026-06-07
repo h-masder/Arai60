@@ -149,11 +149,12 @@ class Solution:
 - 初期値は [0, numsの長さ] とする。
 - 区間 [left, right] は「挿入位置の候補」を表す。
 - middle = (left + right) // 2 を取る。
-- middle == numsの長さ の場合は、配列の末尾への挿入を意味する。
+- middle == (numsの長さ) の場合は、(numsの長さ) + 1への挿入を意味する。
 - それ以外では nums[middle] を参照し、
-  - nums[middle] < target なら挿入位置は middle + 1 以降なので [middle + 1, right]
-  - target <= nums[middle] なら挿入位置は middle 以前なので [left, middle]
-  - 最後に left == right となり、その位置が挿入位置になる。したがって、leftかrightのどちらかを返す。
+  - nums[middle] < target なら挿入位置は middle + 1 より左にはないので、探索区間を [middle + 1, right]にする。
+  - target < nums[middle] なら、挿入位置は middle より右にはないので、探索区間を [left, middle] にする。
+  - この操作により、常に「target の挿入位置が存在するとすれば探索区間の中にある」という性質を維持する。
+- 区間の更新を繰り返すと、最後は left == right となり、その位置が挿入位置になる。したがって、leftかrightのどちらかを返す。
 
 ```py
 class Solution:
