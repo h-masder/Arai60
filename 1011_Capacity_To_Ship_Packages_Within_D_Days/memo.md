@@ -34,7 +34,8 @@
    - **初期設定**
    - [0, 1, 2, ..., (weights[i]の最大値) * (weightsの長さ)]という区間を設定する。この区間で運べないcapacityと運べるcapacityの境界を管理する。
      - 0は絶対に運べない。これをunshippable_capacityとする。unshippable_capacityとこれより左は運べない。
-     - (weights[i]の最大値) * (weightsの長さ)は1日あれば運べる。これをshippable_capacityとする。unshippable_capacityとこれより右は運べる。もし、days = 0 に対処するなら、`if days <= 0:`で対処する。（他の方法として）shippable_capacity = (weights[i]の最大値) * (weightsの長さ) + 1みたくして、ここにたどりついたときは、特別な処理をするなどもあるが、daysが0以下のときにわざわざプログラムの処理を走らせる必要がないのと、区間の意味に一貫性がなくなるので不採用。
+     - (weights[i]の最大値) * (weightsの長さ)は1日あれば運べる。これをshippable_capacityとする。unshippable_capacityとこれより右は運べる。
+     - (もし、days = 0 に対処するなら、`if days <= 0:`で対処する。（他の方法として）shippable_capacity = (weights[i]の最大値) * (weightsの長さ) + 1みたくして、ここにたどりついたときは、特別な処理をするなどもあるが、daysが0以下のときにわざわざプログラムの処理を走らせる必要がないのと、区間の意味に一貫性がなくなるので不採用。)
    - **探索**
    - capacity_to_try = (unshippable_capacity + shippable_capacity) // 2 に対して、引数として与えられたdays以内に運べるかチェックする。方針は以下の通り
      - 詰め込みたい荷物の単体のweightがcapacityをこえていたら、運べない（return False）
