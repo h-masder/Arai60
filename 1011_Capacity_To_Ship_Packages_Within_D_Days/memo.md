@@ -23,27 +23,25 @@
 - 1 <= weights[i] <= 500
 
 # アプローチ
-- 求めたいのは、すべての荷物を days 日以内に運べる最小の船のcapacityである。
-- 取りうる capacityの範囲 1 <= capacity <= (weights[i]の最大値) * (weightsの長さ)に対して、
-- 言い換えると、
+- 求めたいのは、すべての荷物を days 日以内に運べる最小のcapacity
+- 言い換えると、取りうる capacityの範囲 1 <= capacity <= (weights[i]の最大値) * (weightsの長さ)に対して、
   - capacity - 1 では運べない
   - capacityでは運べる
-- となるcapacityを探したい。(これを思いつくのに少し時間がかかった。)
+- となるcapacityを探したい。(ここのたどりつくのに少し時間がかかった。)
 
-- 容量を小さい方から順に試していくこともできるが、二分探索で行うと効率がよいので、そうする。
+- 容量を小さい方から順に試していくこともできるが、二分探索で行うと効率がよいのでそうする。
 - 二分探索
    - **初期設定**
    - [0, 1, 2, ..., (weights[i]の最大値) * (weightsの長さ)]という区間を設定する。この区間で運べないcapacityと運べるcapacityの境界を管理する。
      - 0は絶対に運べない。これをunshippable_capacityとする。unshippable_capacityとこれより左は運べない。
-     - (weights[i]の最大値) * (weightsの長さ)は1日あれば運べる。これをshippable_capacityとする。unshippable_capacityとこれより右は運べる。
+     - (weights[i]の最大値) * (weightsの長さ)は1日あれば運べる。これをshippable_capacityとする。unshippable_capacityとこれより右は運べる。もし、days = 0 に対処するなら、`if days <= 0:`で対処する。（他の方法として）shippable_capacity = (weights[i]の最大値) * (weightsの長さ) + 1みたくして、ここにたどりついたときは、特別な処理をするなどもあるが、daysが0以下のときにわざわざプログラムの処理を走らせる必要がないのと、区間の意味に一貫性がなくなるので不採用。
    - **探索**
    - capacity_to_try = (unshippable_capacity + shippable_capacity) // 2 に対して、引数として与えられたdays以内に運べるかチェックする。方針は以下の通り
-     - 詰め込みたい荷物の単体の重さがcapacityをこえていたら、運べない（return False）
+     - 詰め込みたい荷物の単体のweightがcapacityをこえていたら、運べない（return False）
      - 詰め込みたい荷物の合計が capacityをこえたら、その荷物は次の日に送る。これを繰り返した結果、daysをこえるなら運べない（return False）。daysを超えないなら運べる（return True）
-     - チェックは前から順に入れていって、days以内に送れるか調べる。
-  - もし運べなかったら、unshippable_capacity = capacity_to_try
-  - 運べたら、shippable_capacity = capacity_to_try
-  - unshippable_capacity + 1 = shippable_capacityになったら探索を終了する。unshippable_capacity + 1かshippable_capacityを返せばよい
+     - return Falseなら、unshippable_capacity = capacity_to_try
+     - return Trueなら、shippable_capacity = capacity_to_try
+  - unshippable_capacity + 1 = shippable_capacityになったら探索を終了する（つまり、[unshippable_capacity, shippable_capacity]という長さ2の区間になったら二分探索のループを抜ける）。unshippable_capacity + 1かshippable_capacityを返せばよい
 
 **実行時間の見積もり**
 - [0, 1, 2, ..., (weights[i]の最大値) * (weightsの長さ)]の二分探索にかかるメモリアクセスは、
@@ -95,7 +93,8 @@ class Solution:
   - 設定方法
     - 左端: left_capacity = max(weights)
     - 右端: right_capacity = sum(weights)
-    - コードがシンプルになる。一応max()とsum()は2*weightsだけメモリアクセスが増えるが、大差ない。（探索区間も短くなっているので、check_shipping_within_daysの呼び出し回数が数回減るかもしれないので、そういう意味でも実行時間は大差ない）
+    - コードがシンプルになる。一応max()とsum()は2*weightsだけメモリアクセスが増えるが、大差ない。
+    - （探索区間も短くなっているので、check_shipping_within_daysの呼び出し回数は数回減る場合がある。そういう意味でも実行時間は大差ない）
 
 - 自分で書いたコードを修正してみた。
 ```py
@@ -204,9 +203,9 @@ class Solution:
   - 終了条件は、探索区間の消失(打ち切り区間の衝突)のタイミング、つまり left == right のとき
 
 - これに対して思ったことは、
-- capacity = 0 では、運べないことは（weightsをみなくても）自明なので、capacityとして取りうる値の範囲としては適切ではない。初期値は、[1, sys.maxsize + 1)のほうが良い。
-- 初期値の変更によって区間の更新（縮め方）を変える必要はない。capacityがmiddleのとき
-  - 運べるときは、[low, middle]で良いし、
-  - 運べないなら、[middle + 1, right]でよい。
+  - capacity = 0 では、運べないことは（weightsをみなくても）自明なので、capacityとして取りうる値の範囲としては適切ではない。初期値は、[1, sys.maxsize + 1)のほうが良い。
+  - 初期値の変更によって区間の更新（縮め方）を変える必要はない。capacityがmiddleのとき
+    - 運べるときは、[low, middle)で良いし、
+    - 運べないなら、[middle + 1, right)でよい。
 
 - （自分用のメモ：二分探索の区間初期値で2以上かつif low == highという終了条件なら、必ず最後は[left, right)という長さ2の区間を見ることになる。この事実は、ループを抜けるときなどの細部のチェックに必須。）
