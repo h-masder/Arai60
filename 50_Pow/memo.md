@@ -115,6 +115,8 @@ print(float(pow(2, 1024))) # -> overflowエラー
   - https://github.com/Yuto729/leetcode/pull/50/changes
   - https://github.com/Manato110/LeetCode-arai60/pull/46
 
+- (以下の説明は、github上ではうまく表示されないので、画像を添付した。)
+
 指数 `n` を2進数で表現すると、`n` は 2 の冪の和として表せる。したがって、
 $$
 n = \sum_k b_k 2^k
