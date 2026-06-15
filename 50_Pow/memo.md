@@ -24,7 +24,7 @@
 - Either x is not zero or n > 0.
 
 # アプローチ
-- Exponentiation_by_squaringでやればよい。むかし調べて実装したのでよく覚えている。
+- Exponentiation by squaringでやればよい。むかし調べて実装したのでよく覚えている。
   - https://en.wikipedia.org/wiki/Exponentiation_by_squaring 
 
 **実行時間**
