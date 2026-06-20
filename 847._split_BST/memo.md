@@ -88,7 +88,7 @@ Both subtrees have the same number of nodes, but the subtree with 5 as the root 
 **実行時間の見積もり**
 - The size of the BST will not exceed 50であり、分割とnode数のカウントでそれぞれ50回のメモリアクセス。
 - 各処理では、比較や加算などの簡単な処理がコード数行から数十行程度で終わるためそれを数十ステップとすると、総ステップ数は10^3くらい。
-- Pythonの実行速度を10^7ステップ/秒とすると、1msくらい。
+- Pythonの実行速度を10^7ステップ/秒とすると、100μsくらい。
 
 ```py
 class Solution:
